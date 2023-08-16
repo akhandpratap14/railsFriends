@@ -18,23 +18,40 @@
           <strong>linkedin</strong>
         </th>
         <th>
+          <strong>User Id</strong>
+        </th>
+        <th>
+          <strong></strong>
+        </th>
+        <th>
+          <strong></strong>
+        </th>
+        <th>
           <strong></strong>
         </th>
       </tr>
     </thead>
         <tbody>
         <% @friends.each do |friend| %>
+          <% if friend.user == current_user %>
           <tr>
             <td><%= friend.first_name %></td>
             <td><%= friend.last_name %></td>
             <td><%= friend.email %></td>
             <td><%= friend.phone %></td>
             <td><%= friend.linkedin %></td>
+            <td><%= friend.user_id %></td>
             <td> <%= link_to "Show this friend", friend %></td>
+
+            <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
+            <td><%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+            <% end %>
            
           </tr>
-           
+
           <% end %>
+           
+          
         </tbody>
     </table>
   
